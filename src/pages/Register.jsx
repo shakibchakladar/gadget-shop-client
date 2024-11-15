@@ -2,6 +2,8 @@ import { Link, useNavigate } from "react-router-dom";
 import useAuth from "../hooks/useAuth";
 import { useForm } from "react-hook-form";
 import GoogleLogin from "../compoments/socialLogin/GoogleLogin";
+import axios from "axios";
+import Swal from "sweetalert2";
 
 const Register = () => {
   const { CreateUser } = useAuth();
@@ -14,12 +16,32 @@ const Register = () => {
   const navigate = useNavigate();
 
   const onSubmit = (data) => {
-    CreateUser(data.email, data.password);
-    navigate("/");
+    const email = data.email;
+    const role = data.role;
+    const status = role === "buyer" ? "approved" : "pending";
+    const wishlist = [];
+
+    const userData = { email, role, status, wishlist };
+    CreateUser(data.email, data.password)
+      .then(() => {
+        axios.post("http://localhost:4000/users", userData).then((res) => {
+          if (res.data.insertedId) {
+            Swal.fire({
+              position: "center",
+              icon: "success",
+              title: "Registration Successfully",
+              showConfirmButton: false,
+              timer: 1500,
+            });
+          }
+          navigate("/");
+        });
+      })
+      .then(() => {});
   };
   return (
-    <div className="hero bg-base-200 min-h-screen">
-      <div className="hero-content flex-col lg:flex-row-reverse">
+    <div className="min-h-screen hero bg-base-200">
+      <div className="flex-col hero-content lg:flex-row-reverse">
         <div className="text-center lg:text-left">
           <h1 className="text-5xl font-bold">Register now!</h1>
           <p className="py-6">
@@ -28,7 +50,7 @@ const Register = () => {
             a id nisi.
           </p>
         </div>
-        <div className="card bg-base-100 w-full max-w-sm shrink-0 shadow-2xl">
+        <div className="w-full max-w-sm shadow-2xl card bg-base-100 shrink-0">
           <form onSubmit={handleSubmit(onSubmit)} className="card-body">
             <div className="form-control">
               <label className="label">
@@ -41,7 +63,7 @@ const Register = () => {
                 {...register("email", { required: true })}
               />
               {errors.email && (
-                <p className="text-red-500 text-sm font-light">
+                <p className="text-sm font-light text-red-500">
                   email is required
                 </p>
               )}
@@ -60,12 +82,12 @@ const Register = () => {
                 })}
               />
               {errors.password?.type === "required" && (
-                <p className="text-red-500 text-sm font-light">
+                <p className="text-sm font-light text-red-500">
                   password is required
                 </p>
               )}
               {errors.password?.type === "minLength" && (
-                <p className="text-red-500 text-sm font-light">
+                <p className="text-sm font-light text-red-500">
                   password must have atleast 6 character
                 </p>
               )}
@@ -88,12 +110,24 @@ const Register = () => {
                 })}
               />
               {errors.confirmPassword && (
-                <p className="text-red-500 text-sm font-light">
+                <p className="text-sm font-light text-red-500">
                   password not match
                 </p>
               )}
             </div>
-            <div className="form-control mt-6">
+            <div className="form-control">
+              <label className="label">
+                <span className="label-text">Role</span>
+              </label>
+              <select
+                className="w-full max-w-xs select select-bordered"
+                {...register("role", { required: true })}
+              >
+                <option value="buyer">Buyer</option>
+                <option value="seller">Seller</option>
+              </select>
+            </div>
+            <div className="mt-6 form-control">
               <button type="submit" className="btn btn-primary">
                 Register
               </button>
@@ -101,7 +135,7 @@ const Register = () => {
             <p>
               already have account! <Link to="/login">Log in</Link>
             </p>
-            <div className="mb-2 p-5">
+            <div className="p-5 mb-2">
               <GoogleLogin />
             </div>
           </form>

@@ -12,11 +12,12 @@ const UserDropDown = () => {
     <div className="dropdown dropdown-bottom dropdown-end">
       <div tabIndex={0} role="button">
         <div className="avatar">
-          <div className=" w-12 rounded-full">
-          <img src={`${user?.photoURL? user.photoURL:'https://i.ibb.co.com/KNLwjrH/user-1.png'}`}/>
+          <div className="w-12 rounded-full ">
+            <img
+              src={`${user?.photoURL || "https://i.ibb.co/KNLwjrH/user-1.png"}`}
+            />
           </div>
         </div>
-        {/*  <img src={`${user?.photoURL? user.photoURL:'https://i.ibb.co.com/KNLwjrH/user-1.png'}`}  */}
       </div>
       <ul
         tabIndex={0}

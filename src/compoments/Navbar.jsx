@@ -11,7 +11,7 @@ const Navbar = () => {
           <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
             <svg
               xmlns="http://www.w3.org/2000/svg"
-              className="h-5 w-5"
+              className="w-5 h-5"
               fill="none"
               viewBox="0 0 24 24"
               stroke="currentColor"
@@ -47,10 +47,10 @@ const Navbar = () => {
             </li>
           </ul>
         </div>
-        <a className="btn btn-ghost text-xl">Gadget Shop</a>
+        <a className="text-xl btn btn-ghost"><span className="font-bold text-red-800">Gadget</span> Shop</a>
       </div>
-      <div className="navbar-center hidden lg:flex">
-        <ul className="menu menu-horizontal px-1">
+      <div className="hidden navbar-center lg:flex">
+        <ul className="px-1 menu menu-horizontal">
           <li>
             <NavLink to="/">Home</NavLink>
           </li>
@@ -71,12 +71,12 @@ const Navbar = () => {
         ) : (
           <div className="flex items-center gap-2">
             <Link to="/login">
-              <button className="btn btn-sm border-t-gray-400 text-black px-4 rounded-md">
+              <button className="px-4 text-black rounded-md btn btn-sm border-t-gray-400">
                 Login
               </button>
             </Link>
             <Link to="register">
-              <button className="btn btn-sm bg-black text-white px-4 rounded-md">
+              <button className="px-4 text-white bg-black rounded-md btn btn-sm">
                 Regestration
               </button>
             </Link>

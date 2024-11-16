@@ -1,6 +1,6 @@
 const FeaturedCard = () => {
   return (
-    <div className="shadow-xl card card-compact bg-base-100 w-96">
+    <div className="transition-transform delay-75 transform shadow-xl featured-card card card-compact bg-base-100 w-96 hover:scale-105">
       <figure>
         <img
           src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSx1Du163lWirdyScfJ7W74LTMerWCq6560Kw&s"

@@ -1,16 +1,16 @@
 const FeaturedCard = () => {
   return (
-    <div className="card card-compact bg-base-100 w-96 shadow-xl">
+    <div className="shadow-xl card card-compact bg-base-100 w-96">
       <figure>
         <img
-          src="https://img.daisyui.com/images/stock/photo-1606107557195-0e29a4b5b4aa.webp"
+          src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSx1Du163lWirdyScfJ7W74LTMerWCq6560Kw&s"
           alt="Shoes"
         />
       </figure>
       <div className="card-body">
         <h2 className="card-title">Shoes!</h2>
         <p>If a dog chews shoes whose shoes does he choose?</p>
-        <div className="card-actions justify-end">
+        <div className="justify-end card-actions">
           <button className="btn btn-primary">Buy Now</button>
         </div>
       </div>

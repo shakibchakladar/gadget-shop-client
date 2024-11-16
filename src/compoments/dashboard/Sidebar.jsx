@@ -3,6 +3,7 @@ import useUserData from "../../hooks/useUserData";
 import { MdOutlineInventory2 } from "react-icons/md";
 import { IoIosAddCircle } from "react-icons/io";
 import useAuth from "../../hooks/useAuth";
+import { CiLogout } from "react-icons/ci";
 
 const sellerRoutes = [
   {
@@ -40,16 +41,6 @@ const Sidebar = () => {
               </NavLink>
             </li>
           ))}
-        {/* <li className="btn">
-          <NavLink className="p-2 m-2 " to="/my-products">
-            My products
-          </NavLink>
-        </li>
-        <li className="btn">
-          <NavLink className="p-2 m-2 " to="/add-products">
-            Add Products
-          </NavLink>
-        </li> */}
         <li className="p-2 mx-2 border border-black btn">
           <NavLink className="p-2 m-2 " to="/">
             Home{" "}
@@ -57,7 +48,10 @@ const Sidebar = () => {
         </li>
         <li className="p-2 mx-2 border border-black btn">
           <button onClick={LogOut} className="">
-            Log Out
+            <div className="flex justify-center gap-5">
+              <CiLogout />
+              Log Out
+            </div>
           </button>
         </li>
       </ul>

@@ -49,7 +49,7 @@ const AddProduct = () => {
 
   return (
     <div>
-      <h2 className="mb-12 text-2xl font-bold text-center">Add product</h2>
+      <h2 className="mb-12 text-2xl font-bold text-center text-primary">Add product</h2>
       <div>
         <form onSubmit={handleSubmit(onSubmit)} className="card-body">
           <div className="form-control">

@@ -3,7 +3,6 @@ import useAuth from "../hooks/useAuth";
 
 const UserDropDown = () => {
   const { user, LogOut } = useAuth();
-  console.log(user.photoURL);
 
   const handleLogOut = () => {
     LogOut();

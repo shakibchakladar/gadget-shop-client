@@ -12,6 +12,8 @@ import Overview from "../pages/dashboard/Overview";
 import Myproducts from "../pages/dashboard/seller/Myproducts";
 import SellerRoutes from "./private/SellerRoutes";
 import AddProduct from "../pages/dashboard/seller/AddProduct";
+import Mywishlist from "../compoments/dashboard/buyer/Mywishlist";
+import BuyerRoute from "./private/BuyerRoute";
 
 export const router = createBrowserRouter([
   {
@@ -61,6 +63,14 @@ export const router = createBrowserRouter([
         element: <Overview />,
       },
       {
+        path: "/dashboard/wishlist",
+        element: (
+          <BuyerRoute>
+            <Mywishlist />
+          </BuyerRoute>
+        ),
+      },
+      {
         path: "/dashboard/my-products",
         element: (
           <SellerRoutes>
@@ -72,7 +82,7 @@ export const router = createBrowserRouter([
         path: "/dashboard/add-products",
         element: (
           <SellerRoutes>
-            <AddProduct/>
+            <AddProduct />
           </SellerRoutes>
         ),
       },
